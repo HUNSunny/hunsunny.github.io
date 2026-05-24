@@ -194,6 +194,18 @@
             font-size: 0.9rem;
         }
         
+        /* Apró statisztikai és dátum szövegek a láblécben */
+        .footer-stats {
+            margin-top: 15px;
+            font-size: 0.8rem;
+            color: #4f545c;
+            line-height: 1.6;
+        }
+        .footer-stats span {
+            color: var(--cherry-red);
+            font-weight: 600;
+        }
+        
         /* Mobil nézet finomhangolása */
         @media (max-width: 768px) {
             .command-item { flex-direction: column; text-align: center; }
@@ -250,13 +262,13 @@
             </div>
             
             <div class="command-item">
-                <div class="cmd-name">/voice létrehozás</div>
-                <div class="cmd-desc">Ezzel a paranccsal privát voice szobát lehet létrehozni, amit a megadott jelszóval tudsz kezelni. Ha nincs használva, 1 percen belül automatikusan törlődik.</div>
-            </div>
-            
-            <div class="command-item">
                 <div class="cmd-name">/játék mire-gondoltam</div>
                 <div class="cmd-desc">Ezzel a paranccsal az egyikőtök gondol valamire, amit a többieknek ki kell találnia. A létrehozó körülírja, mire gondolt, anélkül, hogy elmondaná azt.</div>
+            </div>
+
+            <div class="command-item">
+                <div class="cmd-name">/voice létrehozás</div>
+                <div class="cmd-desc">Ezzel a paranccsal privát voice szobát lehet létrehozni, amit a megadott jelszóval tudsz kezelni. Ha nincs használva, 1 percen belül automatikusan törlődik.</div>
             </div>
         </div>
     </div>
@@ -264,7 +276,34 @@
     <footer>
         <p>&copy; 2026 [HUN]Sunny. Minden jog fenntartva.</p>
         <p>Készítette: Dóri</p>
+        
+        <div class="footer-stats">
+            Megtekintések száma: <span id="view-counter">1</span><br>
+            <span id="current-date">Mai dátum: 2026.05.24. Vasárnap</span>
+        </div>
     </footer>
+
+    <script>
+        // Megtekintés számláló kezelése (LocalStorage)
+        let count = localStorage.getItem('hunsunny_views');
+        if (count === null) {
+            count = 1;
+        } else {
+            count = parseInt(count) + 1;
+        }
+        localStorage.setItem('hunsunny_views', count);
+        document.getElementById('view-counter').innerText = count;
+
+        // Mai nap és dátum automatikus kiírása magyarul
+        const napok = ['Vasárnap', 'Hétfő', 'Kedd', 'Szerda', 'Csütörtök', 'Péntek', 'Szombat'];
+        const most = new Date();
+        const ev = most.getFullYear();
+        const honap = String(most.getMonth() + 1).padStart(2, '0');
+        const nap = String(most.getDate()).padStart(2, '0');
+        const napNeve = napok[most.getDay()];
+        
+        document.getElementById('current-date').innerText = `Mai dátum: ${ev}.${honap}.${nap}. ${napNeve}`;
+    </script>
 
 </body>
 </html>
