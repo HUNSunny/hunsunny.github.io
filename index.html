@@ -178,7 +178,7 @@
             border-radius: 6px; 
             color: #ffffff; 
             font-weight: 800;
-            min-width: 160px;
+            min-width: 250px;
             text-align: center;
         }
         .cmd-desc { margin-left: 30px; font-size: 1rem; color: #b9bbbe; }
@@ -197,7 +197,8 @@
         /* Mobil nézet finomhangolása */
         @media (max-width: 768px) {
             .command-item { flex-direction: column; text-align: center; }
-            .cmd-desc { margin-left: 0; margin-top: 15px; }
+            .cmd-name { min-width: auto; margin-bottom: 10px; width: 100%; }
+            .cmd-desc { margin-left: 0; margin-top: 5px; }
             .hero h1 { font-size: 3rem; }
             .nav { padding: 20px; }
         }
@@ -244,23 +245,18 @@
             <h2>Alapvető Parancsok</h2>
             
             <div class="command-item">
-                <div class="cmd-name">/help</div>
-                <div class="cmd-desc">Megjeleníti a részletes parancslistát és a bot használati útmutatóját a Discordon belül.</div>
+                <div class="cmd-name">/emlékeztető</div>
+                <div class="cmd-desc">Ezzel a paranccsal tudsz magadnak, valamint a barátaid részére emlékeztetőt állítani egy adott eseményhez, amit a /emlékeztetők paranccsal tudtok megtekinteni, módosítani vagy akár törölni is.</div>
             </div>
             
             <div class="command-item">
-                <div class="cmd-name">/ping</div>
-                <div class="cmd-desc">Ellenőrzi a bot aktuális válaszidejét (latency) a szerver felé.</div>
+                <div class="cmd-name">/voice létrehozás</div>
+                <div class="cmd-desc">Ezzel a paranccsal privát voice szobát lehet létrehozni, amit a megadott jelszóval tudsz kezelni. Ha nincs használva, 1 percen belül automatikusan törlődik.</div>
             </div>
             
             <div class="command-item">
-                <div class="cmd-name">/info</div>
-                <div class="cmd-desc">Megmutatja a legfontosabb statisztikákat a botról és a szerverről.</div>
-            </div>
-
-            <div class="command-item">
-                <div class="cmd-name">/clear [szám]</div>
-                <div class="cmd-desc">Törli a megadott számú üzenetet a csatornából (Adminisztrátoroknak).</div>
+                <div class="cmd-name">/játék mire-gondoltam</div>
+                <div class="cmd-desc">Ezzel a paranccsal az egyikőtök gondol valamire, amit a többieknek ki kell találnia. A létrehozó körülírja, mire gondolt, anélkül, hogy elmondaná azt.</div>
             </div>
         </div>
     </div>
