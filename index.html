@@ -22,17 +22,15 @@
             --dark-card: #18191c;
             --dark-bg: #121315;
             --gold-star: #f1c40f;
+            --discord-blurple: #5865F2;
         }
 
         body { 
             font-family: 'Montserrat', sans-serif; 
             background-color: var(--dark-bg); 
-            
-            /* Sűrű, egyedi szimbólumos háttér mint tapéta */
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cg fill='%23D2042D' opacity='0.08'%3E%3C!-- Gamepad --%3E%3Cpath transform='translate(20, 20) scale(1.5)' d='M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm3-3c-.83 0-1.5-.67-1.5-1.5S17.67 6 18.5 6s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z'/%3E%3C!-- Lightning --%3E%3Cpath transform='translate(120, 30) scale(1.8) rotate(15)' d='M11 21l-1-4.5H5.5L12 3h1.5l1 4.5h4.5L11 21z'/%3E%3C!-- Discord --%3E%3Cpath transform='translate(30, 120) scale(1.5) rotate(-10)' d='M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.09.09 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.09 16.09 0 0 0-4.8 0c-.14-.33-.35-.76-.53-1.09a.09.09 0 0 0-.07-.03c-1.5.26-2.93.71-4.27 1.33a.08.08 0 0 0-.04.03C2.96 8.52 1.74 13 2.14 17.41a.08.08 0 0 0 .03.06c1.78 1.32 3.51 2.12 5.2 2.65a.08.08 0 0 0 .08-.02c.4-.55.76-1.13 1.07-1.74a.08.08 0 0 0-.04-.11c-.57-.22-1.11-.48-1.64-.78a.08.08 0 0 1-.01-.11c.11-.08.22-.17.33-.25a.08.08 0 0 1 .08-.01c3.41 1.56 7.12 1.56 10.5 0a.08.08 0 0 1 .08.01c.11.08.22.17.33.26a.08.08 0 0 1-.01.11c-.52.3-1.07.56-1.64.78a.08.08 0 0 0-.04.11c.31.61.67 1.19 1.07 1.74a.08.08 0 0 0 .08.02c1.7-.53 3.42-1.33 5.2-2.65a.08.08 0 0 0 .03-.06c.49-5.1-.9-9.53-3.23-13.06a.06.06 0 0 0-.04-.03zM8.02 14.28c-1.03 0-1.87-.96-1.87-2.12s.83-2.12 1.87-2.12c1.04 0 1.89.96 1.87 2.12 0 1.16-.83 2.12-1.87 2.12zm7.97 0c-1.03 0-1.87-.96-1.87-2.12s.83-2.12 1.87-2.12c1.04 0 1.89.96 1.87 2.12 0 1.16-.83 2.12-1.87 2.12z'/%3E%3C!-- Cherry --%3E%3Cg transform='translate(130, 130) scale(1.6)'%3E%3Cpath d='M12 2 Q 10 10 6 14' stroke='%23D2042D' stroke-width='1.5' fill='none'/%3E%3Ccircle cx='5' cy='16' r='3' fill='%23D2042D'/%3E%3Cpath d='M12 2 Q 14 10 18 14' stroke='%23D2042D' stroke-width='1.5' fill='none'/%3E%3Ccircle cx='19' cy='16' r='3' fill='%23D2042D'/%3E%3Cpath d='M12 2 Q 16 0 18 2 Q 16 4 12 2' fill='%23D2042D'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
             background-repeat: repeat;
             background-size: 250px 250px;
-            
             color: #dcddde; 
             line-height: 1.6; 
             overflow-x: hidden;
@@ -72,73 +70,38 @@
         
         /* Navigáció */
         nav { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            padding: 20px 50px; 
-            background-color: rgba(18, 19, 21, 0.95); 
-            backdrop-filter: blur(10px);
-            border-bottom: 2px solid var(--cherry-dark);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            display: flex; justify-content: space-between; align-items: center; 
+            padding: 20px 50px; background-color: rgba(18, 19, 21, 0.95); 
+            backdrop-filter: blur(10px); border-bottom: 2px solid var(--cherry-dark);
+            position: sticky; top: 0; z-index: 100;
         }
-        
-        /* Navigációs sáv logó és profilkép */
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .nav-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: 2px solid var(--cherry-red);
-            object-fit: cover;
-            box-shadow: 0 0 10px var(--cherry-glow);
-        }
+        .logo-container { display: flex; align-items: center; gap: 12px; }
+        .nav-avatar { width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--cherry-red); object-fit: cover; box-shadow: 0 0 10px var(--cherry-glow); }
         .logo { font-size: 1.8rem; font-weight: 800; color: #ffffff; letter-spacing: 2px; }
         .logo span { color: var(--cherry-red); }
         
         /* Fő Rész */
         .hero { text-align: center; padding: 80px 20px 60px 20px; position: relative; }
-        
-        /* Hatalmas profilkép a főcím mellett */
-        .hero-title-wrapper {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 25px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-        .hero-avatar {
-            width: 90px;
-            height: 90px;
-            border-radius: 50%;
-            border: 4px solid var(--cherry-red);
-            box-shadow: 0 0 25px var(--cherry-glow-strong);
-            object-fit: cover;
-        }
+        .hero-title-wrapper { display: flex; align-items: center; justify-content: center; gap: 25px; margin-bottom: 20px; flex-wrap: wrap; }
+        .hero-avatar { width: 90px; height: 90px; border-radius: 50%; border: 4px solid var(--cherry-red); box-shadow: 0 0 25px var(--cherry-glow-strong); object-fit: cover; }
         .hero h1 { font-size: 4.5rem; margin-bottom: 0; text-transform: uppercase; letter-spacing: 3px; text-shadow: 0 5px 15px rgba(0,0,0,0.5); }
         .hero p { font-size: 1.2rem; max-width: 750px; margin: 20px auto 40px auto; color: #b9bbbe; font-weight: 400; line-height: 1.8; }
         .hero p strong { color: #ffffff; }
         
         .buttons { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-        .btn { padding: 15px 35px; border-radius: 8px; font-weight: 600; text-decoration: none; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease; }
+        .btn { padding: 15px 35px; border-radius: 8px; font-weight: 600; text-decoration: none; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease; border: none; cursor: pointer; display: inline-block; font-family: 'Montserrat', sans-serif;}
         .btn-primary { background-color: var(--cherry-red); color: white; border: 2px solid var(--cherry-red); animation: pulseGlow 3s infinite ease-in-out; }
         .btn-primary:hover { background-color: transparent; color: var(--cherry-red); box-shadow: 0 0 35px var(--cherry-glow-strong); transform: translateY(-3px); animation: none; }
         .btn-secondary { background-color: transparent; color: white; border: 2px solid #4f545c; }
         .btn-secondary:hover { border-color: white; background-color: rgba(255, 255, 255, 0.05); transform: translateY(-3px); }
 
-        /* Statisztikák (Büszkeségfal) */
+        /* Egyszerűsített Statisztikák Sáv */
         .stats-section {
-            display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; padding: 40px 20px;
+            display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; padding: 30px 20px;
             background: linear-gradient(90deg, rgba(18,19,21,0) 0%, rgba(210,4,45,0.05) 50%, rgba(18,19,21,0) 100%);
             border-top: 1px solid rgba(210,4,45,0.1); border-bottom: 1px solid rgba(210,4,45,0.1); margin-bottom: 60px;
         }
-        .stat-box { text-align: center; min-width: 150px; }
+        .stat-box { text-align: center; }
         .stat-number { font-size: 3rem; font-weight: 800; color: var(--cherry-red); text-shadow: 0 0 15px var(--cherry-glow); margin-bottom: 5px; }
         .stat-label { font-size: 1rem; color: #b9bbbe; text-transform: uppercase; letter-spacing: 1px; }
 
@@ -163,18 +126,25 @@
         .cmd-name { font-family: 'Montserrat', sans-serif; font-size: 1.1rem; background-color: rgba(210, 4, 45, 0.1); border: 1px solid var(--cherry-dark); padding: 8px 20px; border-radius: 6px; color: #ffffff; font-weight: 800; min-width: 250px; text-align: center; }
         .cmd-desc { margin-left: 30px; font-size: 1rem; color: #b9bbbe; }
 
-        /* Vélemények */
-        .reviews-section { margin-bottom: 80px; }
-        .reviews-section h2 { text-align: center; margin-bottom: 40px; font-size: 2.2rem; text-transform: uppercase; letter-spacing: 2px; }
-        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-        .review-card { background-color: var(--dark-card); padding: 30px; border-radius: 12px; border-left: 4px solid var(--cherry-red); border-top: 1px solid #2a2b2e; border-right: 1px solid #2a2b2e; border-bottom: 1px solid #2a2b2e; box-shadow: 0 5px 20px rgba(0,0,0,0.2); position: relative; }
-        .review-header { display: flex; align-items: center; margin-bottom: 15px; }
-        .review-avatar { width: 50px; height: 50px; border-radius: 50%; background-color: #2f3136; margin-right: 15px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: #fff; overflow: hidden; }
-        .review-avatar img { width: 100%; height: 100%; object-fit: cover; }
-        .review-info h4 { font-size: 1.1rem; color: #fff; margin-bottom: 3px; }
-        .review-stars { color: var(--gold-star); font-size: 0.9rem; }
-        .review-text { color: #b9bbbe; font-style: italic; font-size: 0.95rem; line-height: 1.5; }
-        .quote-icon { position: absolute; top: 20px; right: 20px; font-size: 2rem; color: rgba(255,255,255,0.03); }
+        /* Vélemények Rész (Gombbal, üres állapottal) */
+        .reviews-section { margin-bottom: 80px; text-align: center; background-color: var(--dark-card); padding: 50px; border-radius: 12px; border: 1px solid #2a2b2e; }
+        .reviews-section h2 { margin-bottom: 20px; font-size: 2.2rem; text-transform: uppercase; letter-spacing: 2px; }
+        .reviews-section p { color: #b9bbbe; margin-bottom: 30px; font-size: 1.1rem; }
+        
+        .btn-discord {
+            background-color: var(--discord-blurple);
+            color: white;
+            border: 2px solid var(--discord-blurple);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .btn-discord:hover {
+            background-color: transparent;
+            color: var(--discord-blurple);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(88, 101, 242, 0.4);
+        }
 
         /* Lábléc */
         footer { text-align: center; padding: 40px; background-color: #0b0c0d; border-top: 2px solid var(--cherry-dark); margin-top: 40px; color: #72767d; font-size: 0.9rem; }
@@ -224,14 +194,6 @@
             <div class="stat-number" data-target="15">0</div>
             <div class="stat-label">Szervereken</div>
         </div>
-        <div class="stat-box">
-            <div class="stat-number" data-target="340">0</div>
-            <div class="stat-label">Felhasználó</div>
-        </div>
-        <div class="stat-box">
-            <div class="stat-number" data-target="42">0</div>
-            <div class="stat-label">Ping (ms)</div>
-        </div>
     </div>
 
     <div class="container">
@@ -271,63 +233,11 @@
 
         <div class="reviews-section">
             <h2>Ezt mondta a közösségünk</h2>
-            <div class="reviews-grid">
-                
-                <div class="review-card">
-                    <i class="fa-solid fa-quote-right quote-icon"></i>
-                    <div class="review-header">
-                        <div class="review-avatar">
-                            <i class="fa-brands fa-discord"></i>
-                        </div>
-                        <div class="review-info">
-                            <h4>InDeKnoW (Isti)</h4>
-                            <div class="review-stars">
-                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="review-text">
-                        "A legjobb magyar nyelvű bot, amivel eddig találkoztam! A voice rendszere zseniális, a saját szerveremen is folyamatosan használjuk. Csak ajánlani tudom!"
-                    </div>
-                </div>
-
-                <div class="review-card">
-                    <i class="fa-solid fa-quote-right quote-icon"></i>
-                    <div class="review-header">
-                        <div class="review-avatar" style="background-color: #5865F2;">
-                            <i class="fa-solid fa-user"></i>
-                        </div>
-                        <div class="review-info">
-                            <h4>Kira_Gamer</h4>
-                            <div class="review-stars">
-                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="review-text">
-                        "Végre egy bot, ami teljesen magyarul beszél és nem kell órákat szenvedni a beállítással. Nagyon stabilan fut, eddig semmi problémám nem volt vele."
-                    </div>
-                </div>
-
-                <div class="review-card">
-                    <i class="fa-solid fa-quote-right quote-icon"></i>
-                    <div class="review-header">
-                        <div class="review-avatar" style="background-color: var(--cherry-red);">
-                            <i class="fa-solid fa-headset"></i>
-                        </div>
-                        <div class="review-info">
-                            <h4>Alex99</h4>
-                            <div class="review-stars">
-                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="review-text">
-                        "Az emlékeztető funkció mentette már meg a klán találkozónkat! Szuper a dizájnja a parancsoknak is."
-                    </div>
-                </div>
-
-            </div>
+            <p>Még nincsenek értékelések. Legyél te az első, aki véleményt ír a botról!</p>
+            
+            <button class="btn btn-discord" onclick="alert('A Discord bejelentkezés és az értékelési rendszer fejlesztés alatt áll! Kérlek, addig is írd meg a véleményed a Készítő szerverén.')">
+                <i class="fa-brands fa-discord"></i> Véleményt írok
+            </button>
         </div>
 
     </div>
