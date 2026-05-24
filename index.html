@@ -21,6 +21,7 @@
             --cherry-dark: #9e0322;
             --dark-card: #18191c;
             --dark-bg: #121315;
+            --gold-star: #f1c40f;
         }
 
         body { 
@@ -38,51 +39,38 @@
             position: relative;
         }
         
-        /* --- 4. EFFEKT: Egérkövető "Zseblámpa" Aura (Hover Glow) --- */
+        /* Egérkövető Aura */
         #cursor-glow {
             position: fixed;
-            width: 500px; /* Az aura átmérője */
+            width: 500px;
             height: 500px;
             background: radial-gradient(circle, rgba(210, 4, 45, 0.12) 0%, rgba(210, 4, 45, 0) 70%);
             border-radius: 50%;
-            pointer-events: none; /* Átengedi a kattintásokat, ne takarja a gombokat */
-            z-index: 1; /* A tartalom ALÁ kerüljön */
-            transform: translate(-50%, -50%); /* Hogy az egér a kör közepén legyen */
+            pointer-events: none;
+            z-index: 1;
+            transform: translate(-50%, -50%);
             opacity: 0;
-            transition: opacity 0.4s ease; /* Finoman tűnik el, ha kimegy az egér */
+            transition: opacity 0.4s ease;
         }
-        /* Csak asztali gépen mutassuk az aurát, mobilon (érintőképernyő) ne */
         @media (pointer: fine) {
-            body:hover #cursor-glow {
-                opacity: 1;
-            }
+            body:hover #cursor-glow { opacity: 1; }
         }
 
-        /* Hogy a tartalom ne takarja el az aurát, és az aura ne takarja a tartalmat */
-        nav, .hero, .container, footer {
+        nav, .hero, .container, footer, .stats-section {
             position: relative;
-            z-index: 2; /* Az aura FELETT legyenek */
+            z-index: 2;
         }
 
-        /* --- 1. EFFEKT: Pulzáló "Lélegző" Főgomb (Glow Pulse) --- */
+        /* Pulzáló Gomb */
         @keyframes pulseGlow {
-            0% {
-                box-shadow: 0 4px 15px var(--cherry-glow);
-                border-color: var(--cherry-red);
-            }
-            50% {
-                box-shadow: 0 0 30px var(--cherry-glow-strong);
-                border-color: #ff476d; /* Enyhén kivilágosodik a keret */
-            }
-            100% {
-                box-shadow: 0 4px 15px var(--cherry-glow);
-                border-color: var(--cherry-red);
-            }
+            0% { box-shadow: 0 4px 15px var(--cherry-glow); border-color: var(--cherry-red); }
+            50% { box-shadow: 0 0 30px var(--cherry-glow-strong); border-color: #ff476d; }
+            100% { box-shadow: 0 4px 15px var(--cherry-glow); border-color: var(--cherry-red); }
         }
 
         h1, h2, h3 { color: #ffffff; font-weight: 800; }
         
-        /* Felső navigációs sáv */
+        /* Navigáció */
         nav { 
             display: flex; 
             justify-content: space-between; 
@@ -95,176 +83,114 @@
             top: 0;
             z-index: 100;
         }
-        .logo { 
-            font-size: 1.8rem; 
-            font-weight: 800; 
-            color: #ffffff; 
-            letter-spacing: 2px; 
+        
+        /* Navigációs sáv logó és profilkép */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
+        .nav-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid var(--cherry-red);
+            object-fit: cover;
+            box-shadow: 0 0 10px var(--cherry-glow);
+        }
+        .logo { font-size: 1.8rem; font-weight: 800; color: #ffffff; letter-spacing: 2px; }
         .logo span { color: var(--cherry-red); }
         
-        /* Fő bemutatkozó rész (Hero) */
-        .hero { 
-            text-align: center; 
-            padding: 120px 20px; 
-            position: relative;
-        }
-        .hero h1 { 
-            font-size: 4.5rem; 
-            margin-bottom: 20px; 
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            text-shadow: 0 5px 15px rgba(0,0,0,0.5); 
-        }
-        .hero p { 
-            font-size: 1.2rem; 
-            max-width: 750px; 
-            margin: 0 auto 40px auto; 
-            color: #b9bbbe; 
-            font-weight: 400;
-            line-height: 1.8;
-        }
-        .hero p strong {
-            color: #ffffff;
-        }
+        /* Fő Rész */
+        .hero { text-align: center; padding: 80px 20px 60px 20px; position: relative; }
         
-        /* Gombok dizájnja */
+        /* Hatalmas profilkép a főcím mellett */
+        .hero-title-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .hero-avatar {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            border: 4px solid var(--cherry-red);
+            box-shadow: 0 0 25px var(--cherry-glow-strong);
+            object-fit: cover;
+        }
+        .hero h1 { font-size: 4.5rem; margin-bottom: 0; text-transform: uppercase; letter-spacing: 3px; text-shadow: 0 5px 15px rgba(0,0,0,0.5); }
+        .hero p { font-size: 1.2rem; max-width: 750px; margin: 20px auto 40px auto; color: #b9bbbe; font-weight: 400; line-height: 1.8; }
+        .hero p strong { color: #ffffff; }
+        
         .buttons { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-        .btn { 
-            padding: 15px 35px; 
-            border-radius: 8px; 
-            font-weight: 600; 
-            text-decoration: none; 
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease; 
-        }
-        
-        /* Az elsődleges pulzáló gomb */
-        .btn-primary { 
-            background-color: var(--cherry-red); 
-            color: white; 
-            border: 2px solid var(--cherry-red);
-            /* Bekapcsoljuk az automatikus pulzálást */
-            animation: pulseGlow 3s infinite ease-in-out; 
-        }
-        .btn-primary:hover { 
-            background-color: transparent; 
-            color: var(--cherry-red); 
-            box-shadow: 0 0 35px var(--cherry-glow-strong); 
-            transform: translateY(-3px); 
-            /* Hoverre megállítjuk az automatikus animációt, hogy csak a hover effekt érvényesüljön */
-            animation: none; 
-        }
-        
-        .btn-secondary { 
-            background-color: transparent; 
-            color: white; 
-            border: 2px solid #4f545c;
-        }
-        .btn-secondary:hover { 
-            border-color: white; 
-            background-color: rgba(255, 255, 255, 0.05);
-            transform: translateY(-3px); 
-        }
+        .btn { padding: 15px 35px; border-radius: 8px; font-weight: 600; text-decoration: none; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease; }
+        .btn-primary { background-color: var(--cherry-red); color: white; border: 2px solid var(--cherry-red); animation: pulseGlow 3s infinite ease-in-out; }
+        .btn-primary:hover { background-color: transparent; color: var(--cherry-red); box-shadow: 0 0 35px var(--cherry-glow-strong); transform: translateY(-3px); animation: none; }
+        .btn-secondary { background-color: transparent; color: white; border: 2px solid #4f545c; }
+        .btn-secondary:hover { border-color: white; background-color: rgba(255, 255, 255, 0.05); transform: translateY(-3px); }
 
-        /* Tartalom tároló */
-        .container { max-width: 1100px; margin: 60px auto; padding: 0 20px; }
+        /* Statisztikák (Büszkeségfal) */
+        .stats-section {
+            display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; padding: 40px 20px;
+            background: linear-gradient(90deg, rgba(18,19,21,0) 0%, rgba(210,4,45,0.05) 50%, rgba(18,19,21,0) 100%);
+            border-top: 1px solid rgba(210,4,45,0.1); border-bottom: 1px solid rgba(210,4,45,0.1); margin-bottom: 60px;
+        }
+        .stat-box { text-align: center; min-width: 150px; }
+        .stat-number { font-size: 3rem; font-weight: 800; color: var(--cherry-red); text-shadow: 0 0 15px var(--cherry-glow); margin-bottom: 5px; }
+        .stat-label { font-size: 1rem; color: #b9bbbe; text-transform: uppercase; letter-spacing: 1px; }
 
-        /* Funkciók kártyák */
-        .features { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-            gap: 30px; 
-            margin-bottom: 80px; 
-        }
-        .feature-card { 
-            background-color: var(--dark-card); 
-            padding: 40px 30px; 
-            border-radius: 12px; 
-            text-align: center; 
-            border: 1px solid #2a2b2e;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 4px;
-            background-color: var(--cherry-red);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+        /* Funkciók */
+        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 80px; }
+        .feature-card { background-color: var(--dark-card); padding: 40px 30px; border-radius: 12px; text-align: center; border: 1px solid #2a2b2e; box-shadow: 0 10px 30px rgba(0,0,0,0.3); transition: all 0.3s ease; position: relative; overflow: hidden; }
+        .feature-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background-color: var(--cherry-red); transform: scaleX(0); transition: transform 0.3s ease; }
         .feature-card:hover { transform: translateY(-10px); border-color: var(--cherry-dark); }
         .feature-card:hover::before { transform: scaleX(1); }
-        
-        .feature-icon {
-            font-size: 2.5rem;
-            color: var(--cherry-red);
-            margin-bottom: 20px;
-        }
+        .feature-icon { font-size: 2.5rem; color: var(--cherry-red); margin-bottom: 20px; }
         .feature-card h3 { margin-bottom: 15px; font-size: 1.5rem; letter-spacing: 1px; }
         .feature-card p { color: #8e9297; font-size: 0.95rem; }
 
-        /* Parancsok szekció */
-        .commands { background-color: var(--dark-card); padding: 50px; border-radius: 12px; border: 1px solid #2a2b2e; }
+        /* Parancsok */
+        .commands { background-color: var(--dark-card); padding: 50px; border-radius: 12px; border: 1px solid #2a2b2e; margin-bottom: 80px; }
         .commands h2 { text-align: center; margin-bottom: 40px; font-size: 2.2rem; text-transform: uppercase; letter-spacing: 2px; }
-        .command-item { 
-            display: flex; 
-            padding: 20px; 
-            border-bottom: 1px solid #2a2b2e; 
-            align-items: center; 
-            transition: background 0.2s;
-        }
+        .command-item { display: flex; padding: 20px; border-bottom: 1px solid #2a2b2e; align-items: center; transition: background 0.2s; }
         .command-item:hover { background-color: rgba(255,255,255,0.02); }
         .command-item:last-child { border-bottom: none; }
-        .cmd-name { 
-            font-family: 'Montserrat', sans-serif; 
-            font-size: 1.1rem; 
-            background-color: rgba(210, 4, 45, 0.1); 
-            border: 1px solid var(--cherry-dark);
-            padding: 8px 20px; 
-            border-radius: 6px; 
-            color: #ffffff; 
-            font-weight: 800;
-            min-width: 250px;
-            text-align: center;
-        }
+        .cmd-name { font-family: 'Montserrat', sans-serif; font-size: 1.1rem; background-color: rgba(210, 4, 45, 0.1); border: 1px solid var(--cherry-dark); padding: 8px 20px; border-radius: 6px; color: #ffffff; font-weight: 800; min-width: 250px; text-align: center; }
         .cmd-desc { margin-left: 30px; font-size: 1rem; color: #b9bbbe; }
 
+        /* Vélemények */
+        .reviews-section { margin-bottom: 80px; }
+        .reviews-section h2 { text-align: center; margin-bottom: 40px; font-size: 2.2rem; text-transform: uppercase; letter-spacing: 2px; }
+        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .review-card { background-color: var(--dark-card); padding: 30px; border-radius: 12px; border-left: 4px solid var(--cherry-red); border-top: 1px solid #2a2b2e; border-right: 1px solid #2a2b2e; border-bottom: 1px solid #2a2b2e; box-shadow: 0 5px 20px rgba(0,0,0,0.2); position: relative; }
+        .review-header { display: flex; align-items: center; margin-bottom: 15px; }
+        .review-avatar { width: 50px; height: 50px; border-radius: 50%; background-color: #2f3136; margin-right: 15px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: #fff; overflow: hidden; }
+        .review-avatar img { width: 100%; height: 100%; object-fit: cover; }
+        .review-info h4 { font-size: 1.1rem; color: #fff; margin-bottom: 3px; }
+        .review-stars { color: var(--gold-star); font-size: 0.9rem; }
+        .review-text { color: #b9bbbe; font-style: italic; font-size: 0.95rem; line-height: 1.5; }
+        .quote-icon { position: absolute; top: 20px; right: 20px; font-size: 2rem; color: rgba(255,255,255,0.03); }
+
         /* Lábléc */
-        footer { 
-            text-align: center; 
-            padding: 40px; 
-            background-color: #0b0c0d; 
-            border-top: 2px solid var(--cherry-dark);
-            margin-top: 80px; 
-            color: #72767d; 
-            font-size: 0.9rem;
-        }
+        footer { text-align: center; padding: 40px; background-color: #0b0c0d; border-top: 2px solid var(--cherry-dark); margin-top: 40px; color: #72767d; font-size: 0.9rem; }
+        .footer-stats { margin-top: 15px; font-size: 0.8rem; color: #4f545c; line-height: 1.6; }
+        .footer-stats span { color: var(--cherry-red); font-weight: 600; }
         
-        /* Apró statisztikai és dátum szövegek a láblécben */
-        .footer-stats {
-            margin-top: 15px;
-            font-size: 0.8rem;
-            color: #4f545c;
-            line-height: 1.6;
-        }
-        .footer-stats span {
-            color: var(--cherry-red);
-            font-weight: 600;
-        }
-        
-        /* Mobil nézet finomhangolása */
         @media (max-width: 768px) {
             .command-item { flex-direction: column; text-align: center; }
             .cmd-name { min-width: auto; margin-bottom: 10px; width: 100%; }
             .cmd-desc { margin-left: 0; margin-top: 5px; }
+            .hero-title-wrapper { flex-direction: column; gap: 10px; }
             .hero h1 { font-size: 3rem; }
             .nav { padding: 20px; }
+            .stats-section { gap: 20px; }
+            .stat-box { min-width: 100px; }
+            .stat-number { font-size: 2rem; }
         }
     </style>
 </head>
@@ -273,18 +199,38 @@
     <div id="cursor-glow"></div>
 
     <nav>
-        <div class="logo"><span>[HUN]</span>Sunny</div>
+        <div class="logo-container">
+            <img src="https://i.redd.it/017n7zjwqj0h1.jpeg" alt="Sunny Logo" class="nav-avatar">
+            <div class="logo"><span>[HUN]</span>Sunny</div>
+        </div>
     </nav>
 
     <div class="hero">
-        <h1>[HUN]Sunny</h1>
+        <div class="hero-title-wrapper">
+            <img src="https://i.redd.it/017n7zjwqj0h1.jpeg" alt="Sunny Avatar" class="hero-avatar">
+            <h1>[HUN]Sunny</h1>
+        </div>
         <p>Ha egy teljesen magyar nyelven működő Discord botot keresel a szervered kiegészítéséhez, a [HUN]Sunny bot jó választás lehet.<br>
         Ha bármilyen észrevételed vagy kérdésed lenne, a kapcsolatfelvételhez keresd a készítőt Dórit, Discordon <strong>„focutie”</strong> néven, vagy írj az alábbi e-mail címre:<br>
         <strong>hunsunnybot@gmail.com</strong></p>
         <div class="buttons">
             <a href="https://discord.com/oauth2/authorize?client_id=1415357474294468640&permissions=93184&integration_type=0&scope=bot" target="_blank" class="btn btn-primary">Bot Meghívása</a>
-            
             <a href="https://discord.gg/WjdXFZX8PF" target="_blank" class="btn btn-secondary">Készítő szervere</a>
+        </div>
+    </div>
+
+    <div class="stats-section">
+        <div class="stat-box">
+            <div class="stat-number" data-target="15">0</div>
+            <div class="stat-label">Szervereken</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-number" data-target="340">0</div>
+            <div class="stat-label">Felhasználó</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-number" data-target="42">0</div>
+            <div class="stat-label">Ping (ms)</div>
         </div>
     </div>
 
@@ -309,22 +255,81 @@
 
         <div class="commands">
             <h2>Alapvető Parancsok</h2>
-            
             <div class="command-item">
                 <div class="cmd-name">/emlékeztető</div>
                 <div class="cmd-desc">Ezzel a paranccsal tudsz magadnak, valamint a barátaid részére emlékeztetőt állítani egy adott eseményhez, amit a /emlékeztetők paranccsal tudtok megtekinteni, módosítani vagy akár törölni is.</div>
             </div>
-            
             <div class="command-item">
                 <div class="cmd-name">/játék mire-gondoltam</div>
                 <div class="cmd-desc">Ezzel a paranccsal az egyikőtök gondol valamire, amit a többieknek ki kell találnia. A létrehozó körülírja, mire gondolt, anélkül, hogy elmondaná azt.</div>
             </div>
-
             <div class="command-item">
                 <div class="cmd-name">/voice létrehozás</div>
                 <div class="cmd-desc">Ezzel a paranccsal privát voice szobát lehet létrehozni, amit a megadott jelszóval tudsz kezelni. Ha nincs használva, 1 percen belül automatikusan törlődik.</div>
             </div>
         </div>
+
+        <div class="reviews-section">
+            <h2>Ezt mondta a közösségünk</h2>
+            <div class="reviews-grid">
+                
+                <div class="review-card">
+                    <i class="fa-solid fa-quote-right quote-icon"></i>
+                    <div class="review-header">
+                        <div class="review-avatar">
+                            <i class="fa-brands fa-discord"></i>
+                        </div>
+                        <div class="review-info">
+                            <h4>InDeKnoW (Isti)</h4>
+                            <div class="review-stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-text">
+                        "A legjobb magyar nyelvű bot, amivel eddig találkoztam! A voice rendszere zseniális, a saját szerveremen is folyamatosan használjuk. Csak ajánlani tudom!"
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <i class="fa-solid fa-quote-right quote-icon"></i>
+                    <div class="review-header">
+                        <div class="review-avatar" style="background-color: #5865F2;">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+                        <div class="review-info">
+                            <h4>Kira_Gamer</h4>
+                            <div class="review-stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-text">
+                        "Végre egy bot, ami teljesen magyarul beszél és nem kell órákat szenvedni a beállítással. Nagyon stabilan fut, eddig semmi problémám nem volt vele."
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <i class="fa-solid fa-quote-right quote-icon"></i>
+                    <div class="review-header">
+                        <div class="review-avatar" style="background-color: var(--cherry-red);">
+                            <i class="fa-solid fa-headset"></i>
+                        </div>
+                        <div class="review-info">
+                            <h4>Alex99</h4>
+                            <div class="review-stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-text">
+                        "Az emlékeztető funkció mentette már meg a klán találkozónkat! Szuper a dizájnja a parancsoknak is."
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
     </div>
 
     <footer>
@@ -333,42 +338,67 @@
         
         <div class="footer-stats">
             Megtekintések száma: <span id="view-counter">1</span><br>
-            <span id="current-date">Mai dátum: 2026.05.24. Vasárnap</span>
+            <span id="current-date">Mai dátum: ...</span>
         </div>
     </footer>
 
     <script>
-        // 1. Egérkövető Aura kezelése (Zseblámpa effekt)
+        // 1. Zseblámpa Effekt
         const glow = document.getElementById('cursor-glow');
-        
-        // Csak asztali gépen fusson (ahol van egérkurzor)
         if (window.matchMedia("(pointer: fine)").matches) {
             document.addEventListener('mousemove', e => {
-                // Az aura közepét az egér koordinátáira helyezzük
-                // fixed pozíció miatt clientX/Y kell
                 glow.style.left = e.clientX + 'px';
                 glow.style.top = e.clientY + 'px';
             });
         }
 
-        // 2. Megtekintés számláló kezelése (LocalStorage)
-        let count = localStorage.getItem('hunsunny_views');
-        if (count === null) {
-            count = 1;
-        } else {
-            count = parseInt(count) + 1;
-        }
-        localStorage.setItem('hunsunny_views', count);
-        document.getElementById('view-counter').innerText = count;
+        // 2. Felpörgő Számlálók Animációja
+        const counters = document.querySelectorAll('.stat-number');
+        const speed = 100;
 
-        // 3. Mai nap és dátum automatikus kiírása magyarul
+        const animateCounters = () => {
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText;
+                    const inc = target / speed;
+
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + inc);
+                        setTimeout(updateCount, 15);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                updateCount();
+            });
+        };
+
+        const statsSection = document.querySelector('.stats-section');
+        const observer = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                animateCounters();
+                observer.disconnect();
+            }
+        });
+        observer.observe(statsSection);
+
+        // 3. Megtekintések és Dátum
+        let countViews = localStorage.getItem('hunsunny_views');
+        if (countViews === null) {
+            countViews = 1;
+        } else {
+            countViews = parseInt(countViews) + 1;
+        }
+        localStorage.setItem('hunsunny_views', countViews);
+        document.getElementById('view-counter').innerText = countViews;
+
         const napok = ['Vasárnap', 'Hétfő', 'Kedd', 'Szerda', 'Csütörtök', 'Péntek', 'Szombat'];
         const most = new Date();
         const ev = most.getFullYear();
         const honap = String(most.getMonth() + 1).padStart(2, '0');
         const nap = String(most.getDate()).padStart(2, '0');
         const napNeve = napok[most.getDay()];
-        
         document.getElementById('current-date').innerText = `Mai dátum: ${ev}.${honap}.${nap}. ${napNeve}`;
     </script>
 
