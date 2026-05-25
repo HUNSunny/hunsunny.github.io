@@ -6,7 +6,6 @@
     <title>[HUN]Sunny | A prémium Discord bot</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -37,6 +36,34 @@
             position: relative;
         }
         
+        /* Easter Egg: Cseresznye eső */
+        .cherry-emoji {
+            position: fixed;
+            font-size: 2.5rem;
+            z-index: 9999;
+            pointer-events: none;
+            animation: fall 3s linear forwards;
+        }
+        @keyframes fall {
+            to { transform: translateY(100vh) rotate(360deg); }
+        }
+        /* Easter Egg: Remegés */
+        @keyframes shake {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            10% { transform: translate(-5px, -5px) rotate(-1deg); }
+            20% { transform: translate(5px, 5px) rotate(1deg); }
+            30% { transform: translate(-5px, 5px) rotate(-1deg); }
+            40% { transform: translate(5px, -5px) rotate(1deg); }
+            50% { transform: translate(-5px, -5px) rotate(-1deg); }
+            60% { transform: translate(5px, 5px) rotate(1deg); }
+            70% { transform: translate(-5px, 5px) rotate(-1deg); }
+            80% { transform: translate(5px, -5px) rotate(1deg); }
+            90% { transform: translate(-5px, -5px) rotate(-1deg); }
+        }
+        .shake-effect {
+            animation: shake 0.5s infinite;
+        }
+
         /* Egérkövető Aura */
         #cursor-glow {
             position: fixed;
@@ -84,7 +111,10 @@
         .hero { text-align: center; padding: 80px 20px 60px 20px; position: relative; }
         .hero-title-wrapper { display: flex; align-items: center; justify-content: center; gap: 25px; margin-bottom: 20px; flex-wrap: wrap; }
         .hero-avatar { width: 90px; height: 90px; border-radius: 50%; border: 4px solid var(--cherry-red); box-shadow: 0 0 25px var(--cherry-glow-strong); object-fit: cover; }
-        .hero h1 { font-size: 4.5rem; margin-bottom: 0; text-transform: uppercase; letter-spacing: 3px; text-shadow: 0 5px 15px rgba(0,0,0,0.5); }
+        
+        /* Külön osztály a kattintható címnek, hogy az egér mutatóvá váljon */
+        .clickable-title { font-size: 4.5rem; margin-bottom: 0; text-transform: uppercase; letter-spacing: 3px; text-shadow: 0 5px 15px rgba(0,0,0,0.5); cursor: default; user-select: none; }
+        
         .hero p { font-size: 1.2rem; max-width: 750px; margin: 20px auto 40px auto; color: #b9bbbe; font-weight: 400; line-height: 1.8; }
         .hero p strong { color: #ffffff; }
         
@@ -94,18 +124,10 @@
         .btn-primary:hover { background-color: transparent; color: var(--cherry-red); box-shadow: 0 0 35px var(--cherry-glow-strong); transform: translateY(-3px); animation: none; }
         .btn-secondary { background-color: transparent; color: white; border: 2px solid #4f545c; }
         .btn-secondary:hover { border-color: white; background-color: rgba(255, 255, 255, 0.05); transform: translateY(-3px); }
+        .btn-paypal { background-color: #ffc439; color: #000; border: 2px solid #ffc439; font-weight: 800; }
+        .btn-paypal:hover { background-color: transparent; color: #ffc439; transform: translateY(-3px); }
 
-        /* Egyszerűsített Statisztikák Sáv */
-        .stats-section {
-            display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; padding: 30px 20px;
-            background: linear-gradient(90deg, rgba(18,19,21,0) 0%, rgba(210,4,45,0.05) 50%, rgba(18,19,21,0) 100%);
-            border-top: 1px solid rgba(210,4,45,0.1); border-bottom: 1px solid rgba(210,4,45,0.1); margin-bottom: 60px;
-        }
-        .stat-box { text-align: center; }
-        .stat-number { font-size: 3rem; font-weight: 800; color: var(--cherry-red); text-shadow: 0 0 15px var(--cherry-glow); margin-bottom: 5px; }
-        .stat-label { font-size: 1rem; color: #b9bbbe; text-transform: uppercase; letter-spacing: 1px; }
-
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        .container { max-width: 1100px; margin: 60px auto; padding: 0 20px; }
 
         /* Funkciók */
         .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 80px; }
@@ -126,26 +148,6 @@
         .cmd-name { font-family: 'Montserrat', sans-serif; font-size: 1.1rem; background-color: rgba(210, 4, 45, 0.1); border: 1px solid var(--cherry-dark); padding: 8px 20px; border-radius: 6px; color: #ffffff; font-weight: 800; min-width: 250px; text-align: center; }
         .cmd-desc { margin-left: 30px; font-size: 1rem; color: #b9bbbe; }
 
-        /* Vélemények Rész (Gombbal, üres állapottal) */
-        .reviews-section { margin-bottom: 80px; text-align: center; background-color: var(--dark-card); padding: 50px; border-radius: 12px; border: 1px solid #2a2b2e; }
-        .reviews-section h2 { margin-bottom: 20px; font-size: 2.2rem; text-transform: uppercase; letter-spacing: 2px; }
-        .reviews-section p { color: #b9bbbe; margin-bottom: 30px; font-size: 1.1rem; }
-        
-        .btn-discord {
-            background-color: var(--discord-blurple);
-            color: white;
-            border: 2px solid var(--discord-blurple);
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .btn-discord:hover {
-            background-color: transparent;
-            color: var(--discord-blurple);
-            transform: translateY(-3px);
-            box-shadow: 0 4px 15px rgba(88, 101, 242, 0.4);
-        }
-
         /* Lábléc */
         footer { text-align: center; padding: 40px; background-color: #0b0c0d; border-top: 2px solid var(--cherry-dark); margin-top: 40px; color: #72767d; font-size: 0.9rem; }
         .footer-stats { margin-top: 15px; font-size: 0.8rem; color: #4f545c; line-height: 1.6; }
@@ -156,11 +158,8 @@
             .cmd-name { min-width: auto; margin-bottom: 10px; width: 100%; }
             .cmd-desc { margin-left: 0; margin-top: 5px; }
             .hero-title-wrapper { flex-direction: column; gap: 10px; }
-            .hero h1 { font-size: 3rem; }
+            .clickable-title { font-size: 3rem; }
             .nav { padding: 20px; }
-            .stats-section { gap: 20px; }
-            .stat-box { min-width: 100px; }
-            .stat-number { font-size: 2rem; }
         }
     </style>
 </head>
@@ -178,7 +177,7 @@
     <div class="hero">
         <div class="hero-title-wrapper">
             <img src="https://i.redd.it/017n7zjwqj0h1.jpeg" alt="Sunny Avatar" class="hero-avatar">
-            <h1>[HUN]Sunny</h1>
+            <h1 class="clickable-title" id="easter-egg-trigger">[HUN]Sunny</h1>
         </div>
         <p>Ha egy teljesen magyar nyelven működő Discord botot keresel a szervered kiegészítéséhez, a [HUN]Sunny bot jó választás lehet.<br>
         Ha bármilyen észrevételed vagy kérdésed lenne, a kapcsolatfelvételhez keresd a készítőt Dórit, Discordon <strong>„focutie”</strong> néven, vagy írj az alábbi e-mail címre:<br>
@@ -186,13 +185,7 @@
         <div class="buttons">
             <a href="https://discord.com/oauth2/authorize?client_id=1415357474294468640&permissions=93184&integration_type=0&scope=bot" target="_blank" class="btn btn-primary">Bot Meghívása</a>
             <a href="https://discord.gg/WjdXFZX8PF" target="_blank" class="btn btn-secondary">Készítő szervere</a>
-        </div>
-    </div>
-
-    <div class="stats-section">
-        <div class="stat-box">
-            <div class="stat-number" data-target="15">0</div>
-            <div class="stat-label">Szervereken</div>
+            <a href="https://paypal.me/gdoranikolett" target="_blank" class="btn btn-paypal"><i class="fa-brands fa-paypal"></i> Támogatás</a>
         </div>
     </div>
 
@@ -218,6 +211,10 @@
         <div class="commands">
             <h2>Alapvető Parancsok</h2>
             <div class="command-item">
+                <div class="cmd-name">/parancsok</div>
+                <div class="cmd-desc">Ezzel a paranccsal megtekinthető az összes létező parancsa a botnak.</div>
+            </div>
+            <div class="command-item">
                 <div class="cmd-name">/emlékeztető</div>
                 <div class="cmd-desc">Ezzel a paranccsal tudsz magadnak, valamint a barátaid részére emlékeztetőt állítani egy adott eseményhez, amit a /emlékeztetők paranccsal tudtok megtekinteni, módosítani vagy akár törölni is.</div>
             </div>
@@ -230,16 +227,6 @@
                 <div class="cmd-desc">Ezzel a paranccsal privát voice szobát lehet létrehozni, amit a megadott jelszóval tudsz kezelni. Ha nincs használva, 1 percen belül automatikusan törlődik.</div>
             </div>
         </div>
-
-        <div class="reviews-section">
-            <h2>Ezt mondta a közösségünk</h2>
-            <p>Még nincsenek értékelések. Legyél te az első, aki véleményt ír a botról!</p>
-            
-            <button class="btn btn-discord" onclick="alert('A Discord bejelentkezés és az értékelési rendszer fejlesztés alatt áll! Kérlek, addig is írd meg a véleményed a Készítő szerverén.')">
-                <i class="fa-brands fa-discord"></i> Véleményt írok
-            </button>
-        </div>
-
     </div>
 
     <footer>
@@ -262,38 +249,7 @@
             });
         }
 
-        // 2. Felpörgő Számlálók Animációja
-        const counters = document.querySelectorAll('.stat-number');
-        const speed = 100;
-
-        const animateCounters = () => {
-            counters.forEach(counter => {
-                const updateCount = () => {
-                    const target = +counter.getAttribute('data-target');
-                    const count = +counter.innerText;
-                    const inc = target / speed;
-
-                    if (count < target) {
-                        counter.innerText = Math.ceil(count + inc);
-                        setTimeout(updateCount, 15);
-                    } else {
-                        counter.innerText = target;
-                    }
-                };
-                updateCount();
-            });
-        };
-
-        const statsSection = document.querySelector('.stats-section');
-        const observer = new IntersectionObserver((entries) => {
-            if (entries[0].isIntersecting) {
-                animateCounters();
-                observer.disconnect();
-            }
-        });
-        observer.observe(statsSection);
-
-        // 3. Megtekintések és Dátum
+        // 2. Megtekintések és Dátum
         let countViews = localStorage.getItem('hunsunny_views');
         if (countViews === null) {
             countViews = 1;
@@ -310,6 +266,50 @@
         const nap = String(most.getDate()).padStart(2, '0');
         const napNeve = napok[most.getDay()];
         document.getElementById('current-date').innerText = `Mai dátum: ${ev}.${honap}.${nap}. ${napNeve}`;
+
+        // 3. Easter Egg: 6 kattintás a címre
+        let clickCount = 0;
+        let isShaking = false;
+
+        document.getElementById('easter-egg-trigger').addEventListener('click', () => {
+            if (isShaking) return; // Ha már fut az animáció, ne számoljon
+
+            clickCount++;
+            if (clickCount === 6) {
+                isShaking = true;
+                
+                // 1. Hozzáadjuk a remegés effektet a body-hoz
+                document.body.classList.add('shake-effect');
+                
+                // 2. Késleltetjük a popupot egy picit, hogy látszódjon a remegés indulása
+                setTimeout(() => {
+                    alert('Figyelem: A [HUN]Sunny bot átvette az irányítást a géped felett... Ne ess pánikba, csak vicceltem!');
+                }, 500);
+
+                // 3. Cseresznye eső indítása (kb 50 darab)
+                for(let i = 0; i < 50; i++) {
+                    setTimeout(() => {
+                        let cherry = document.createElement('div');
+                        cherry.innerHTML = '🍒';
+                        cherry.className = 'cherry-emoji';
+                        cherry.style.left = Math.random() * 100 + 'vw';
+                        // Eltérő esési sebességek (2 és 4 másodperc között)
+                        cherry.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                        document.body.appendChild(cherry);
+                        
+                        // Kitöröljük a cseresznyét, ha leért
+                        setTimeout(() => cherry.remove(), 4000);
+                    }, i * 100); // Folyamatosan potyognak
+                }
+
+                // 4. 6 másodperc múlva minden visszaáll az eredetibe
+                setTimeout(() => {
+                    document.body.classList.remove('shake-effect');
+                    clickCount = 0;
+                    isShaking = false;
+                }, 6000);
+            }
+        });
     </script>
 
 </body>
