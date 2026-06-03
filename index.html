@@ -12,14 +12,15 @@
         /* Alap beállítások */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
+        /* VISSZAÁLLÍTVA AZ EREDETI CSERESZNYEPIROS SZÍNEKRE */
         :root {
-            --pink-primary: #ff5e84;
-            --pink-light: #ff8fae;
-            --pink-glow: rgba(255, 94, 132, 0.4);
-            --pink-glow-strong: rgba(255, 94, 132, 0.7);
-            --pink-dark: #cc2a52;
-            --dark-card: rgba(24, 25, 28, 0.7);
-            --dark-bg: #0b0c0e;
+            --cherry-red: #D2042D;
+            --cherry-glow: rgba(210, 4, 45, 0.4);
+            --cherry-glow-strong: rgba(210, 4, 45, 0.6);
+            --cherry-dark: #9e0322;
+            --dark-card: #18191c;
+            --dark-bg: #121315;
+            --gold-star: #f1c40f;
         }
 
         body { 
@@ -31,30 +32,29 @@
             position: relative;
         }
 
-        /* 1. JAVÍTOTT MOZGÓ HÁTTÉR (Nagyobb, egyértelműbb macskával és mikrofonnal) */
+        /* 1. MOZGÓ HÁTTÉR - PIROS SZÍNBEN, JÓL LÁTHATÓ IKONOKKAL */
         .animated-background {
             position: fixed;
             top: 0; left: 0; width: 200vw; height: 200vw;
             z-index: -2;
             pointer-events: none;
-            /* SVG Minta: Cica, Fülhallgató, Mikrofon (Opacity kicsit feljebb véve: 0.07) */
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Cg fill='%23ff5e84' fill-opacity='0.07'%3E%3C!-- Macska --%3E%3Cpath transform='translate(50, 50) scale(0.12)' d='M227.1 38.6a7.1 7.1 0 0 1 10.7-5.9l43.2 24.5a14.2 14.2 0 0 1 6.8 11.2 174.5 174.5 0 0 1 134.4 0 14.2 14.2 0 0 1 6.8-11.2l43.2-24.5a7.1 7.1 0 0 1 10.7 5.9v57.1a166.4 166.4 0 0 1 29 90.1c0 86.8-63.5 158.7-147 170.8V448a32 32 0 1 1-64 0V356.6C118.5 344.5 55 272.6 55 185.8a166.4 166.4 0 0 1 29-90.1V38.6zm-83.1 200.7a32 32 0 1 0-64 0 32 32 0 1 0 64 0zm192 0a32 32 0 1 0-64 0 32 32 0 1 0 64 0z'/%3E%3C!-- Mikrofon --%3E%3Cpath transform='translate(250, 80) scale(0.12)' d='M256 320c53.02 0 96-42.98 96-96V96c0-53.02-42.98-96-96-96s-96 42.98-96 96v128c0 53.02 42.98 96 96 96zm-136-96c0 68.52 50.84 125.1 116 134.4V432h-44c-11.05 0-20 8.95-20 20s8.95 20 20 20h128c11.05 0 20-8.95 20-20s-8.95-20-20-20h-44v-73.61c65.16-9.23 116-65.85 116-134.39 0-11.05-8.95-20-20-20s-20 8.95-20 20c0 53.02-42.98 96-96 96s-96-42.98-96-96c0-11.05-8.95-20-20-20s-20 8.95-20 20z'/%3E%3C!-- Fejhallgató --%3E%3Cpath transform='translate(150, 250) scale(0.12)' d='M256 80C149.9 80 62.4 159.4 49.6 262c9.4-3.8 19.6-6 30.4-6c26.5 0 48 21.5 48 48V432c0 26.5-21.5 48-48 48c-44.2 0-80-35.8-80-80V256C0 114.6 114.6 0 256 0s256 114.6 256 256v144c0 44.2-35.8 80-80 80c-26.5 0-48-21.5-48-48V304c0-26.5 21.5-48 48-48c10.8 0 21 2.2 30.4 6C369.6 159.4 282.1 80 256 80z'/%3E%3C/g%3E%3C/svg%3E");
+            /* Cica, Mikrofon és Fejhallgató - %23D2042D (a cseresznyepiros HEX kódja URL kódolva) */
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Cg fill='%23D2042D' fill-opacity='0.08'%3E%3C!-- Macska --%3E%3Cpath transform='translate(50, 50) scale(0.18)' d='M227.1 38.6a7.1 7.1 0 0 1 10.7-5.9l43.2 24.5a14.2 14.2 0 0 1 6.8 11.2 174.5 174.5 0 0 1 134.4 0 14.2 14.2 0 0 1 6.8-11.2l43.2-24.5a7.1 7.1 0 0 1 10.7 5.9v57.1a166.4 166.4 0 0 1 29 90.1c0 86.8-63.5 158.7-147 170.8V448a32 32 0 1 1-64 0V356.6C118.5 344.5 55 272.6 55 185.8a166.4 166.4 0 0 1 29-90.1V38.6zm-83.1 200.7a32 32 0 1 0-64 0 32 32 0 1 0 64 0zm192 0a32 32 0 1 0-64 0 32 32 0 1 0 64 0z'/%3E%3C!-- Mikrofon --%3E%3Cpath transform='translate(250, 80) scale(0.15)' d='M256 320c53.02 0 96-42.98 96-96V96c0-53.02-42.98-96-96-96s-96 42.98-96 96v128c0 53.02 42.98 96 96 96zm-136-96c0 68.52 50.84 125.1 116 134.4V432h-44c-11.05 0-20 8.95-20 20s8.95 20 20 20h128c11.05 0 20-8.95 20-20s-8.95-20-20-20h-44v-73.61c65.16-9.23 116-65.85 116-134.39 0-11.05-8.95-20-20-20s-20 8.95-20 20c0 53.02-42.98 96-96 96s-96-42.98-96-96c0-11.05-8.95-20-20-20s-20 8.95-20 20z'/%3E%3C!-- Fejhallgató --%3E%3Cpath transform='translate(150, 250) scale(0.15)' d='M256 80C149.9 80 62.4 159.4 49.6 262c9.4-3.8 19.6-6 30.4-6c26.5 0 48 21.5 48 48V432c0 26.5-21.5 48-48 48c-44.2 0-80-35.8-80-80V256C0 114.6 114.6 0 256 0s256 114.6 256 256v144c0 44.2-35.8 80-80 80c-26.5 0-48-21.5-48-48V304c0-26.5 21.5-48 48-48c10.8 0 21 2.2 30.4 6C369.6 159.4 282.1 80 256 80z'/%3E%3C/g%3E%3C/svg%3E");
             background-repeat: repeat;
-            animation: scrollBg 90s linear infinite;
+            animation: scrollBg 100s linear infinite;
         }
 
-        /* 2. JAVÍTOTT LO-FI SZILUETT (Jobb alsó sarok, sokkal egyértelműbb cica) */
+        /* 2. EGYÉRTELMŰ MACSKA SZILUETT (Élesebb, cica formájú, farokkal és fülekkel) */
         .lo-fi-silhouette {
             position: fixed;
             bottom: 0;
             right: 0;
             width: 350px;
             height: 250px;
-            z-index: 1; /* A footer mögött, de a háttér előtt */
+            z-index: 1; 
             pointer-events: none;
-            opacity: 0.4;
-            /* Tisztább SVG sziluett: asztal, stúdiómikrofon és egy ülő cica */
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 350 250'%3E%3C!-- Asztal --%3E%3Cpath d='M50 220 H350 V250 H50 Z' fill='%23000'/%3E%3C!-- Mikrofon --%3E%3Crect x='100' y='120' width='15' height='50' rx='7' fill='%23000'/%3E%3Cpath d='M90 150 Q107.5 180 125 150' fill='none' stroke='%23000' stroke-width='4'/%3E%3Crect x='105' y='170' width='5' height='50' fill='%23000'/%3E%3Cpath d='M85 220 H130 L120 210 H95 Z' fill='%23000'/%3E%3C!-- Ülő macska --%3E%3Cpath d='M230 220 C210 220 200 180 210 140 C215 120 230 110 240 110 C245 100 240 85 245 80 C250 90 260 90 265 95 C275 90 285 90 290 80 C295 85 290 100 295 110 C305 110 320 120 325 140 C335 180 325 220 305 220 Z' fill='%23000'/%3E%3Cpath d='M210 200 C180 200 170 220 170 220' fill='none' stroke='%23000' stroke-width='8' stroke-linecap='round'/%3E%3C/svg%3E");
+            opacity: 0.35;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 350 250'%3E%3C!-- Asztal --%3E%3Cpath d='M50 220 H350 V250 H50 Z' fill='%23000'/%3E%3C!-- Mikrofon --%3E%3Crect x='100' y='120' width='15' height='50' rx='7' fill='%23000'/%3E%3Cpath d='M90 150 Q107.5 180 125 150' fill='none' stroke='%23000' stroke-width='4'/%3E%3Crect x='105' y='170' width='5' height='50' fill='%23000'/%3E%3Cpath d='M85 220 H130 L120 210 H95 Z' fill='%23000'/%3E%3C!-- Egyértelmű Macska --%3E%3Cpath d='M275 210 Q340 210, 330 150 Q320 120, 300 140' fill='none' stroke='%23000' stroke-width='10' stroke-linecap='round'/%3E%3C!-- Test --%3E%3Cpath d='M200 220 C 190 140, 250 120, 275 220 Z' fill='%23000'/%3E%3C!-- Fej és Fülek --%3E%3Cpolygon points='220,110 215,70 240,95' fill='%23000'/%3E%3Cpolygon points='255,110 265,70 245,95' fill='%23000'/%3E%3Ccircle cx='240' cy='115' r='22' fill='%23000'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: bottom right;
             transition: opacity 0.5s ease;
@@ -70,20 +70,21 @@
             position: fixed;
             top: 0; left: 50%;
             width: 800px; height: 600px;
-            background: radial-gradient(circle, rgba(255, 94, 132, 0.08) 0%, rgba(11, 12, 14, 0) 70%);
+            /* Pirosas lágy fény felülről */
+            background: radial-gradient(circle, rgba(210, 4, 45, 0.08) 0%, rgba(18, 19, 21, 0) 70%);
             transform: translateX(-50%);
             z-index: -2;
             pointer-events: none;
         }
         
-        /* 3. JAVÍTOTT MASNIESŐ (Teljes képernyőt lefedő, folyamatos hullás) */
+        /* 3. PASZTELL RÓZSASZÍN MASNIESŐ (A CSS filter módosítja az eredeti masnit!) */
         .bow-emoji {
-            position: fixed; /* A fixed miatt mindig a látható képernyőn hullik, görgetéstől függetlenül */
+            position: fixed; 
             font-size: 3rem;
-            z-index: 999999; /* Mindenek felett! */
+            z-index: 999999; 
             pointer-events: none;
-            filter: drop-shadow(0 0 10px rgba(255, 182, 193, 0.9)) saturate(0.5) hue-rotate(-15deg);
-            /* A top: -100px garantálja, hogy a képernyő tetején KÍVÜLRŐL indulnak */
+            /* EZ A SOR TESZI PASZTELL RÓZSASZÍNNÉ A MASNIT */
+            filter: drop-shadow(0 0 10px rgba(255, 182, 193, 0.9)) saturate(0.4) hue-rotate(-15deg);
             top: -100px;
             animation: fall linear forwards;
         }
@@ -91,7 +92,6 @@
             0% { transform: translateY(0) rotate(0deg); opacity: 0; }
             5% { opacity: 1; }
             90% { opacity: 1; }
-            /* Végigmegy a teljes 120vh-n (képernyő magasság + 20%), így biztosan kimegy alul a képből */
             100% { transform: translateY(120vh) rotate(360deg); opacity: 0; }
         }
 
@@ -106,66 +106,70 @@
         nav, .hero, .container, footer { position: relative; z-index: 2; }
 
         @keyframes pulseGlow {
-            0% { box-shadow: 0 4px 15px var(--pink-glow); border-color: var(--pink-primary); }
-            50% { box-shadow: 0 0 30px var(--pink-glow-strong); border-color: var(--pink-light); }
-            100% { box-shadow: 0 4px 15px var(--pink-glow); border-color: var(--pink-primary); }
+            0% { box-shadow: 0 4px 15px var(--cherry-glow); border-color: var(--cherry-red); }
+            50% { box-shadow: 0 0 30px var(--cherry-glow-strong); border-color: #ff476d; }
+            100% { box-shadow: 0 4px 15px var(--cherry-glow); border-color: var(--cherry-red); }
         }
 
         h1, h2, h3 { color: #ffffff; font-weight: 800; }
         
+        /* Navigáció */
         nav { 
             display: flex; justify-content: space-between; align-items: center; 
-            padding: 20px 50px; background-color: rgba(11, 12, 14, 0.85); 
-            backdrop-filter: blur(15px); border-bottom: 1px solid rgba(255, 94, 132, 0.15);
+            padding: 20px 50px; background-color: rgba(18, 19, 21, 0.95); 
+            backdrop-filter: blur(15px); border-bottom: 2px solid var(--cherry-dark);
             position: sticky; top: 0; z-index: 100;
         }
         .logo-container { display: flex; align-items: center; gap: 15px; }
-        .nav-avatar { width: 45px; height: 45px; border-radius: 12px; border: 2px solid var(--pink-primary); object-fit: cover; box-shadow: 0 0 15px var(--pink-glow); }
+        .nav-avatar { width: 45px; height: 45px; border-radius: 12px; border: 2px solid var(--cherry-red); object-fit: cover; box-shadow: 0 0 15px var(--cherry-glow); }
         .logo { font-size: 1.8rem; font-weight: 800; color: #ffffff; letter-spacing: 1px; }
-        .logo span { color: var(--pink-primary); }
+        .logo span { color: var(--cherry-red); }
         
+        /* Fő Rész */
         .hero { text-align: center; padding: 100px 20px 80px 20px; }
         .hero-title-wrapper { display: flex; align-items: center; justify-content: center; gap: 25px; margin-bottom: 25px; flex-wrap: wrap; }
-        .hero-avatar { width: 100px; height: 100px; border-radius: 20px; border: 3px solid var(--pink-primary); box-shadow: 0 0 30px var(--pink-glow-strong); object-fit: cover; transform: rotate(-5deg); transition: transform 0.3s; }
+        .hero-avatar { width: 100px; height: 100px; border-radius: 20px; border: 3px solid var(--cherry-red); box-shadow: 0 0 30px var(--cherry-glow-strong); object-fit: cover; transform: rotate(-5deg); transition: transform 0.3s; }
         .hero-avatar:hover { transform: rotate(0deg) scale(1.05); }
         
-        .clickable-title { font-size: 5rem; margin-bottom: 0; text-transform: uppercase; letter-spacing: 4px; text-shadow: 0 5px 20px rgba(255, 94, 132, 0.4); cursor: pointer; user-select: none; }
+        .clickable-title { font-size: 5rem; margin-bottom: 0; text-transform: uppercase; letter-spacing: 4px; text-shadow: 0 5px 20px rgba(210, 4, 45, 0.4); cursor: pointer; user-select: none; }
         
-        .hero p { font-size: 1.2rem; max-width: 750px; margin: 0 auto 45px auto; color: #a1a3a6; font-weight: 400; line-height: 1.8; }
-        .hero p strong { color: var(--pink-light); }
+        .hero p { font-size: 1.2rem; max-width: 750px; margin: 0 auto 45px auto; color: #b9bbbe; font-weight: 400; line-height: 1.8; }
+        .hero p strong { color: #ffffff; }
         
         .buttons { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-        .btn { padding: 16px 35px; border-radius: 30px; font-weight: 600; text-decoration: none; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease; border: none; cursor: pointer; display: inline-block; font-family: 'Montserrat', sans-serif;}
-        .btn-primary { background-color: var(--pink-primary); color: #fff; border: 2px solid var(--pink-primary); animation: pulseGlow 3s infinite ease-in-out; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);}
-        .btn-primary:hover { background-color: rgba(255, 94, 132, 0.1); color: var(--pink-primary); box-shadow: 0 0 35px var(--pink-glow-strong); transform: translateY(-3px); animation: none; }
+        .btn { padding: 16px 35px; border-radius: 8px; font-weight: 600; text-decoration: none; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease; border: none; cursor: pointer; display: inline-block; font-family: 'Montserrat', sans-serif;}
+        .btn-primary { background-color: var(--cherry-red); color: white; border: 2px solid var(--cherry-red); animation: pulseGlow 3s infinite ease-in-out; }
+        .btn-primary:hover { background-color: transparent; color: var(--cherry-red); box-shadow: 0 0 35px var(--cherry-glow-strong); transform: translateY(-3px); animation: none; }
         .btn-secondary { background-color: transparent; color: white; border: 2px solid #4f545c; }
-        .btn-secondary:hover { border-color: var(--pink-light); color: var(--pink-light); background-color: rgba(255, 94, 132, 0.05); transform: translateY(-3px); }
+        .btn-secondary:hover { border-color: white; background-color: rgba(255, 255, 255, 0.05); transform: translateY(-3px); }
         .btn-paypal { background-color: #ffc439; color: #000; border: 2px solid #ffc439; font-weight: 800; }
         .btn-paypal:hover { background-color: transparent; color: #ffc439; transform: translateY(-3px); }
 
         .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
 
+        /* Kártyák */
         .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 80px; }
-        .feature-card { background-color: var(--dark-card); backdrop-filter: blur(8px); padding: 45px 30px; border-radius: 20px; text-align: center; border: 1px solid rgba(255, 94, 132, 0.1); box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; overflow: hidden; }
-        .feature-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: linear-gradient(90deg, transparent, var(--pink-primary), transparent); transform: translateY(-5px); transition: transform 0.3s ease; }
-        .feature-card:hover { transform: translateY(-10px); border-color: rgba(255, 94, 132, 0.3); background-color: rgba(24, 25, 28, 0.9); }
-        .feature-card:hover::before { transform: translateY(0); }
-        .feature-icon { font-size: 2.8rem; color: var(--pink-primary); margin-bottom: 20px; filter: drop-shadow(0 0 10px var(--pink-glow)); }
+        .feature-card { background-color: var(--dark-card); padding: 45px 30px; border-radius: 12px; text-align: center; border: 1px solid #2a2b2e; box-shadow: 0 10px 30px rgba(0,0,0,0.3); transition: all 0.3s ease; position: relative; overflow: hidden; }
+        .feature-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background-color: var(--cherry-red); transform: scaleX(0); transition: transform 0.3s ease; }
+        .feature-card:hover { transform: translateY(-10px); border-color: var(--cherry-dark); }
+        .feature-card:hover::before { transform: scaleX(1); }
+        .feature-icon { font-size: 2.8rem; color: var(--cherry-red); margin-bottom: 20px; }
         .feature-card h3 { margin-bottom: 15px; font-size: 1.5rem; letter-spacing: 1px; }
         .feature-card p { color: #8e9297; font-size: 0.95rem; }
 
-        .commands { background-color: var(--dark-card); backdrop-filter: blur(8px); padding: 50px; border-radius: 20px; border: 1px solid rgba(255, 94, 132, 0.1); margin-bottom: 80px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
-        .commands h2 { text-align: center; margin-bottom: 40px; font-size: 2.2rem; text-transform: uppercase; letter-spacing: 2px; display: flex; align-items: center; justify-content: center; gap: 15px;}
-        .commands h2 i { color: var(--pink-primary); filter: drop-shadow(0 0 5px var(--pink-glow));}
-        .command-item { display: flex; padding: 25px 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.03); align-items: center; transition: all 0.3s ease; border-radius: 12px; }
-        .command-item:hover { background-color: rgba(255, 94, 132, 0.05); transform: translateX(10px); border-color: transparent; }
+        /* Parancsok */
+        .commands { background-color: var(--dark-card); padding: 50px; border-radius: 12px; border: 1px solid #2a2b2e; margin-bottom: 80px; }
+        .commands h2 { text-align: center; margin-bottom: 40px; font-size: 2.2rem; text-transform: uppercase; letter-spacing: 2px; }
+        .command-item { display: flex; padding: 20px; border-bottom: 1px solid #2a2b2e; align-items: center; transition: background 0.2s; }
+        .command-item:hover { background-color: rgba(255,255,255,0.02); }
         .command-item:last-child { border-bottom: none; }
-        .cmd-name { font-family: 'Montserrat', sans-serif; font-size: 1.1rem; background-color: rgba(255, 94, 132, 0.15); border: 1px solid var(--pink-dark); padding: 10px 25px; border-radius: 30px; color: #ffffff; font-weight: 800; min-width: 250px; text-align: center; box-shadow: 0 0 10px rgba(0,0,0,0.2); }
-        .cmd-desc { margin-left: 35px; font-size: 1rem; color: #b9bbbe; line-height: 1.7; }
+        .cmd-name { font-family: 'Montserrat', sans-serif; font-size: 1.1rem; background-color: rgba(210, 4, 45, 0.1); border: 1px solid var(--cherry-dark); padding: 8px 20px; border-radius: 6px; color: #ffffff; font-weight: 800; min-width: 250px; text-align: center; }
+        .cmd-desc { margin-left: 30px; font-size: 1rem; color: #b9bbbe; }
 
-        footer { text-align: center; padding: 40px; background-color: #070809; border-top: 1px solid rgba(255, 94, 132, 0.2); margin-top: 40px; color: #72767d; font-size: 0.9rem; position: relative; z-index: 10; }
-        .footer-stats { margin-top: 20px; font-size: 0.85rem; color: #5a5f66; line-height: 1.8; }
-        .footer-stats span { color: var(--pink-light); font-weight: 600; }
+        /* Lábléc */
+        footer { text-align: center; padding: 40px; background-color: #0b0c0d; border-top: 2px solid var(--cherry-dark); margin-top: 40px; color: #72767d; font-size: 0.9rem; position: relative; z-index: 10; }
+        .footer-stats { margin-top: 15px; font-size: 0.8rem; color: #4f545c; line-height: 1.6; }
+        .footer-stats span { color: var(--cherry-red); font-weight: 600; }
         
         @media (max-width: 768px) {
             .command-item { flex-direction: column; text-align: center; }
@@ -226,7 +230,7 @@
         </div>
 
         <div class="commands">
-            <h2><i class="fa-solid fa-wand-magic-sparkles"></i> Alapvető Parancsok</h2>
+            <h2>Alapvető Parancsok</h2>
             <div class="command-item">
                 <div class="cmd-name">/emlékeztető</div>
                 <div class="cmd-desc">Ezzel a paranccsal tudsz magadnak, valamint a barátaid részére emlékeztetőt állítani egy adott eseményhez, amit a /emlékeztetők paranccsal tudtok megtekinteni, módosítani vagy akár törölni is.</div>
@@ -274,7 +278,7 @@
         const napNeve = napok[most.getDay()];
         document.getElementById('current-date').innerText = `Mai dátum: ${ev}.${honap}.${nap}. ${napNeve}`;
 
-        // 3. JAVÍTOTT MASNIESŐ LOGIKA
+        // EASTER EGG LOGIKA - 80 Pasztell masnival
         let clickCount = 0;
         let isShaking = false;
 
@@ -291,18 +295,18 @@
                     alert('Surprise! Sunny egy kis pasztell varázslatot küldött a képernyődre! 🎀');
                 }, 500);
 
-                // Most 80 darab masni hullik!
+                // 80 darab pasztell masni
                 for(let i = 0; i < 80; i++) {
                     setTimeout(() => {
                         let bow = document.createElement('div');
                         bow.innerHTML = '🎀'; 
                         bow.className = 'bow-emoji';
                         bow.style.left = Math.random() * 95 + 'vw';
-                        bow.style.animationDuration = (Math.random() * 2.5 + 2.5) + 's'; // 2.5 - 5 másodperc alatt érnek le
+                        bow.style.animationDuration = (Math.random() * 2.5 + 2.5) + 's'; 
                         document.body.appendChild(bow);
                         
                         setTimeout(() => bow.remove(), 5500);
-                    }, i * 80); // Még sűrűbben jönnek (80ms)
+                    }, i * 80); 
                 }
 
                 setTimeout(() => {
