@@ -201,7 +201,7 @@
             <h1 class="clickable-title" id="easter-egg-trigger">[HUN]Sunny</h1>
         </div>
         <p>Ha egy teljesen magyar nyelven működő Discord botot keresel a szervered kiegészítéséhez, a [HUN]Sunny bot jó választás lehet.<br>
-        Ha bármilyen észrevételed vagy kérdésed lenne, a kapcsolatfelvételhez keresd a készítőt Dórit, Discordon <strong>„focutie”</strong> néven, vagy írj az alábbi e-mail címre:<br>
+        Ha bármilyen észrevételed vagy kérdésed lenne, a kapcsolatfelvételhez keresd a készítőt Dórit, Discordon <strong>„masniii06”</strong> néven, vagy írj az alábbi e-mail címre:<br>
         <strong>hunsunnybot@gmail.com</strong></p>
         <div class="buttons">
             <a href="https://discord.com/oauth2/authorize?client_id=1415357474294468640&permissions=93184&integration_type=0&scope=bot" target="_blank" class="btn btn-primary">Bot Meghívása</a>
@@ -255,21 +255,12 @@
         <p>Készítette: Dóri</p>
         
         <div class="footer-stats">
-            Megtekintések száma: <span id="view-counter">1</span><br>
             <span id="current-date">Mai dátum: ...</span>
         </div>
     </footer>
 
     <script>
-        let countViews = localStorage.getItem('hunsunny_views');
-        if (countViews === null) {
-            countViews = 1;
-        } else {
-            countViews = parseInt(countViews) + 1;
-        }
-        localStorage.setItem('hunsunny_views', countViews);
-        document.getElementById('view-counter').innerText = countViews;
-
+        // A dátum logikája megmaradt
         const napok = ['Vasárnap', 'Hétfő', 'Kedd', 'Szerda', 'Csütörtök', 'Péntek', 'Szombat'];
         const most = new Date();
         const ev = most.getFullYear();
